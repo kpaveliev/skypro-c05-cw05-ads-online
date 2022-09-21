@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  api:
+    build: ./backend_django/.
+    environment:
+      SECRET_KEY: django-insecure-3x(e+jml($rxx4pxjpf!@8=70yg)s7+8%gp(+m(x&6(v(sq)(a
+      DB_ENGINE: django.db.backends.postgresql
+      DB_NAME: skymarket
+      DB_USER: skymarket
+      DB_PASSWORD: skymarket
+      DB_HOST: db
+      DB_PORT: 5432
+      DEBUG_MODE: True
+      ALLOWED_HOSTS: "*"
+    ports:
+      - "4000:8000"
+
+

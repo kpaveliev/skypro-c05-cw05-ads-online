@@ -8,7 +8,7 @@ WORKDIR /code
 RUN pip install --upgrade pip
 RUN pip install django psycopg2-binary
 RUN pip install drf-spectacular django-cors-headers djangorestframework djoser djangorestframework-simplejwt pillow
-RUN pip install gunicorn
+RUN pip install gunicorn django-environ
 
 # copy project
 COPY . .
