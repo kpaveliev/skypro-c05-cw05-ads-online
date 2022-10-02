@@ -34,7 +34,7 @@ jobs:
 #      run: docker push kpaveliev/skypro-c05-cw05-frontend:$GITHUB_REF_NAME-$GITHUB_RUN_ID
   deploy:
     runs-on: ubuntu-latest
-    needs: build_and_push_front
+    needs: build_and_push_back
     env:
       SECRET_KEY: ${{ secrets.SECRET_KEY }}
       DB_ENGINE: ${{ secrets.DB_ENGINE }}
