@@ -12,23 +12,29 @@
 frontend available at: localhost:3000  
 backend at: localhost:8000
 
-### How to launch project locally using docker for every service
+### How to launch django project in development
 
-Project is set to start all necessary docker containers and populate database from single command.  
-Just perform the following command: `docker-compose up --build -d`
+1. Create virtual environment
+2. Install dependencies
+3. Set environment variables in .env file
+   - create .env file in backend_django folder
+   - you can copy the default variables from backend_django/.env.example
+4. Launch database from deploy folder
+   - `cd deploy`
+   - `docker compose --env-file ../backend_django/.env -f docker-compose.db.yaml up -d`
+5. Make migrations from todolist folder
+   - `cd backend_django`
+   - `./manage.py makemigraitons`
+   - `./manage.py migrate`
+6. Launch project
+   - `./manage.py runserver`
 
-### How to launch project locally using docker only for db and front
+### How to launch dockerized project
 
-If for some reason you want to launch django manually:
+`cd deploy`
+`docker-compose --env-file ./backend_django/.env -f docker-compose.dev.yaml up -d`
 
-1. Change DATABASES['HOST'] to 'localhost' in line 92 in django_backend/django_backend/settings.py
-2. Perform the following commands in succession:  
-`cd deploy`  
-`docker-compose up --build -d` to start frontend and db
-`cd ../backend_django`  
-`./manage.py migrate`  
-`./manage.py loadall`  
-`django-admin runserver` to start backend
+### How to deploy to prod
 
 
 Kirill Paveliev  
