@@ -3,25 +3,21 @@ on:
   push:
     branches:
       - main
+      - deploy
 jobs:
-  build_and_push_back:
+  build_and_push:
     runs-on: ubuntu-latest
     steps:
       - name: clone code
         uses: actions/checkout@v2
-      - name: docker build
-        run: docker build -t kpaveliev/skypro-c05-cw05-backend:$GITHUB_REF_NAME-$GITHUB_RUN_ID .
+      - name: docker build back
+        run: docker build -t . kpaveliev/skypro-c05-cw05-backend:$GITHUB_REF_NAME-$GITHUB_RUN_ID -f backend_django/Dockerfile
       - name: docker login
         run: echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
       - name: docker push
         run: docker push kpaveliev/skypro-c05-cw05-backend:$GITHUB_REF_NAME-$GITHUB_RUN_ID
-  build_and_push_front:
-    runs-on: ubuntu-latest
-    steps:
-      - name: clone app
-        uses: actions/checkout@v2
-      - name: docker build
-        run: docker build -t kpaveliev/skypro-c05-cw05-frontend:$GITHUB_REF_NAME-$GITHUB_RUN_ID .
+      - name: docker build front
+        run: docker build -t . kpaveliev/skypro-c05-cw05-frontend:$GITHUB_REF_NAME-$GITHUB_RUN_ID -f frontend_react/Dockerfile
       - name: docker login
         run: echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
       - name: docker push
