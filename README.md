@@ -37,8 +37,12 @@ backend at: localhost:8000
 ### Deploy to prod
 
 1. Deploy is configured through github actions
-   - both front and back images are built
-2. Results are available at:
+   - only back images are built on push
+2. If you need to build new image for front
+   - `cd frontent_reat`
+   - `docker build . -t kpaveliev/skypro-c05-cw05-frontend:latest -f Dockerfile`
+   - don't forget to update image references in docker-compose.ci.yaml
+3. Results are available at:
    - http://kpaveliev-skypro.cf
 
 

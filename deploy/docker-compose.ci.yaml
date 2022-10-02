@@ -22,7 +22,7 @@ services:
 
 
   migrations:
-    image: kpaveliev/skypro-c05-cw05-backend:${GITHUB_REF_NAME-$GITHUB_RUN_ID}
+    image: kpaveliev/skypro-c05-cw05-backend:${GITHUB_REF_NAME}-${GITHUB_RUN_ID}
     depends_on:
       db:
         condition: service_healthy
@@ -44,7 +44,7 @@ services:
 
 
   api:
-    image: kpaveliev/skypro-c05-cw05-backend:${GITHUB_REF_NAME-$GITHUB_RUN_ID}
+    image: kpaveliev/skypro-c05-cw05-backend:${GITHUB_REF_NAME}-${GITHUB_RUN_ID}
     depends_on:
       migrations:
         condition: service_completed_successfully
