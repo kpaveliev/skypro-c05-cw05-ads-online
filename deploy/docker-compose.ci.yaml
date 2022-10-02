@@ -63,7 +63,7 @@ services:
       - db_network
 
   frontend:
-    image: kpaveliev/skypro-c05-cw05-frontend:${GITHUB_REF_NAME-$GITHUB_RUN_ID}
+    image: kpaveliev/skypro-c05-cw05-frontend:deploy-3168707499
     volumes:
       - frontend:/app/build
     depends_on:

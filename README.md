@@ -34,7 +34,14 @@ backend at: localhost:8000
 `cd deploy`
 `docker-compose --env-file ./backend_django/.env -f docker-compose.dev.yaml up -d`
 
-### How to deploy to prod
+### Deploy to prod
+
+1. Deploy is configured through github actions
+   - both front and back images are built
+2. Results are available at:
+   - http://kpaveliev-skypro.cf
+
+
 
 
 Kirill Paveliev  
