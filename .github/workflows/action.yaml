@@ -55,7 +55,6 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
-          port: ${{ secrets.SERVER_PORT }}
           source: "deploy/docker-compose.ci.yaml,deploy/nginx.conf"
           target: "avito"
           strip_components: 1
