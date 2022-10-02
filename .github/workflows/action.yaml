@@ -48,14 +48,14 @@ jobs:
       - name: clone code
         uses: actions/checkout@v2
       - name: render docker-compose
-        run: cat deploy/docker-compose.dev.yaml | envsubst > deploy/docker.ci.yaml
+        run: cat deploy/docker-compose.dev.yaml | envsubst > deploy/docker-compose.yaml
       - name: copy files to server
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
-          source: "deploy/docker-compose.ci.yaml,deploy/nginx.conf"
+          source: "deploy/docker-compose.yaml,deploy/nginx.conf"
           target: "avito"
           strip_components: 1
       - name: deploy app
