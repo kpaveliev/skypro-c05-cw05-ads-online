@@ -14,19 +14,19 @@ backend at: localhost:8000
 
 ### How to launch django project in development
 
-1. Create virtual environment
-2. Install dependencies
-3. Set environment variables in .env file
+1. Create virtual environment and install dependencies
+- `poetry install`
+2. Set environment variables in .env file
    - create .env file in backend_django folder
    - you can copy the default variables from backend_django/.env.example
-4. Launch database from deploy folder
+3. Launch database from deploy folder
    - `cd deploy`
    - `docker compose --env-file ../backend_django/.env -f docker-compose.db.yaml up -d`
-5. Make migrations from todolist folder
+4. Make migrations from todolist folder
    - `cd backend_django`
    - `./manage.py makemigraitons`
    - `./manage.py migrate`
-6. Launch project
+5. Launch project
    - `./manage.py runserver`
 
 ### How to launch dockerized project

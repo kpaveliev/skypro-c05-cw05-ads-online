@@ -22,7 +22,7 @@ services:
 
 
   migrations:
-    build: ../backend_django/.
+    image: kpaveliev/skypro-c05-cw05-backend:${GITHUB_REF_NAME-$GITHUB_RUN_ID}
     depends_on:
       db:
         condition: service_healthy
@@ -44,8 +44,7 @@ services:
 
 
   api:
-    build: ../backend_django/.
-    image: backend_django_migrations:latest
+    image: kpaveliev/skypro-c05-cw05-backend:${GITHUB_REF_NAME-$GITHUB_RUN_ID}
     depends_on:
       migrations:
         condition: service_completed_successfully
@@ -63,9 +62,8 @@ services:
       - nginx_network
       - db_network
 
-
   frontend:
-    build: ../frontend_react/.
+    image: kpaveliev/skypro-c05-cw05-frontend:${GITHUB_REF_NAME-$GITHUB_RUN_ID}
     volumes:
       - frontend:/app/build
     depends_on:
