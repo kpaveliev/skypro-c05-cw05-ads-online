@@ -11,7 +11,7 @@ services:
       POSTGRES_DB: ${DB_NAME}
     restart: always
     ports:
-      - "${DB_PORT}:${DB_PORT}"
+      - "8001:${DB_PORT}"
     networks:
       - db_network
     healthcheck:
