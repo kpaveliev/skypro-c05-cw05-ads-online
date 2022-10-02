@@ -83,7 +83,7 @@ services:
     volumes:
       - ../backend_django/django_static/:/usr/share/nginx/html/django_static/
       - ../backend_django/django_media/:/usr/share/nginx/html/django_media/
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx_development.conf:/etc/nginx/conf.d/default.conf
       - frontend:/usr/share/nginx/html/
     restart: always
     depends_on:
