@@ -39,6 +39,8 @@ services:
     depends_on:
       migrations:
         condition: service_completed_successfully
+    volumes:
+      - ./backend_django/django_media:/code/django_media
     networks:
       - nginx_network
       - db_network
